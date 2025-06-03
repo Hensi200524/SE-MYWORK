@@ -1,8 +1,11 @@
+//write a program to  make addition,subtraction,multiplication and divison of two number[user input]
+
+
 #include<stdio.h>
 #include<conio.h>
 
 void main()
-{
+{ 
    int num1;
    int num2;
    int add,sub,mul,divison;
