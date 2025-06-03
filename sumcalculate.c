@@ -1,3 +1,5 @@
+/* write a program to calculate sum of 5 subjets & find the percentage */
+
 #include<stdio.h>
 #include<conio.h>
 
