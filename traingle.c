@@ -1,3 +1,5 @@
+//write a program to find the area of traingle
+
 #include<stdio.h>
 #include<conio.h>
 
@@ -16,5 +18,6 @@ void main()
    
    ans = (base*height) /2;
    printf("Area of traingle is %d:",ans);
-     getch();
+     
+   getch();
 }
