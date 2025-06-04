@@ -1,5 +1,8 @@
+<<<<<<< HEAD
+=======
 /* write a program to calculate sum of 5 subjets & find the percentage */
 
+>>>>>>> 3d4d72f (hello)
 #include<stdio.h>
 #include<conio.h>
 
@@ -31,4 +34,8 @@ void main()
     printf("\n percentage is:%f",percentage);
     
     getch();
+<<<<<<< HEAD
 }
+=======
+}
+>>>>>>> 3d4d72f (hello)
