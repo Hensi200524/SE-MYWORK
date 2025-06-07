@@ -10,7 +10,7 @@ void main()
     printf("Please Enter your number:");
     scanf("%d",&no);
     
-    if(no%2){
+    if(no%2 == 0){
         printf("Even number");
     }
     else
