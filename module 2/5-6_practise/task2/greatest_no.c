@@ -1,3 +1,5 @@
+//Find the greatest among three numbers using nested if.
+
 #include<stdio.h>
 #include<conio.h>
 
