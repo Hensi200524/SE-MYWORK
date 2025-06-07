@@ -1,3 +1,5 @@
+//Check if a number is positive, negative, or zero.
+
 #include<stdio.h>
 #include<conio.h>
 
