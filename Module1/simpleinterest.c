@@ -1,8 +1,5 @@
-<<<<<<< HEAD
-=======
 //write a program to find the simple interest
 
->>>>>>> 3d4d72f (hello)
 #include<stdio.h>
 #include<conio.h>
 
