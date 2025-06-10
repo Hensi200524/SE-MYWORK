@@ -16,15 +16,15 @@ void main()
 		price = 50;
 		printf("child ticket:%d",price);
 	}
-	else if(age>=12 && age<=35)
+	else if(age<= 64))
 	{
-		price = 150;
-		printf("senior ticket:%d",price);
+		price = 100;
+		printf("adult ticket:%d",price);
 	}
 	else
 	{
-		price =70;
-		printf("adult ticket:%d",price);
+		price =150;
+		printf("senior ticket:%d",price);
 	}
 	getch();
 	
