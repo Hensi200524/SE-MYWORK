@@ -1,3 +1,7 @@
+/***Write a C program that checks whether a given number is a prime number or not using a for 
+loop***/
+
+
 #include <stdio.h>
 #include <conio.h>
 
