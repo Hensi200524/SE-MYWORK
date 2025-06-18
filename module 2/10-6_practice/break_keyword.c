@@ -11,7 +11,10 @@ int main()
 		{
 			break;
 		}
-		printf("%d",i);
+		else
+		{
+		printf("%d\n",i);
+		}
 	}
 	return 0;
 }
