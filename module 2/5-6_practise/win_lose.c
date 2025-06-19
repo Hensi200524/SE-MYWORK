@@ -4,7 +4,7 @@
 void main()
 {
 	int usernum;
-	int luckynum=24;
+	int luckynum=33;
 	
 	printf("Enter the Number :");
 	scanf("%d",&usernum);
