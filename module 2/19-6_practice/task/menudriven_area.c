@@ -11,8 +11,8 @@ void main()
 	
 	printf("\n-------calculator Area---------\n");
 	printf("\n1.Area of Triangle\n");
-	printf("\n1.Area of Rectangle\n");
-	printf("\n1.Area of Circle\n");
+	printf("\n2.Area of Rectangle\n");
+	printf("\n3.Area of Circle\n");
 	printf("\n----------------\n");
 	
 	printf("\nEnter your choice (1-3): ");
