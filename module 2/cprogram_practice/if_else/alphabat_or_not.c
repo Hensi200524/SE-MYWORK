@@ -7,7 +7,7 @@ void main()
 {
 	char ch;
 	
-	printf("Enter the Character : ");
+	printf("Enter the alphabat : ");
 	scanf("%c",&ch);
 	
 	if((ch>='A' && ch<='Z')||(ch>='a' && ch<='z'))
