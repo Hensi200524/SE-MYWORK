@@ -1,4 +1,4 @@
-//2 .Write a program to find out the max from given number
+//2 .Write a program to find out the min from given number
 
 #include <stdio.h>
 #include <conio.h>
