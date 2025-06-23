@@ -1,4 +1,5 @@
-//Accept number of students from user. I need to give 5 apples to each student. How many apples are required? 
+///Accept month number and display day of month
+
 
 #include <stdio.h>
 #include <conio.h>
