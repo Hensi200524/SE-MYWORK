@@ -2,6 +2,7 @@
 
 #include <stdio.h>
 #include <conio.h>
+#include <string.h>
 
 void main()
 {
@@ -11,6 +12,6 @@ void main()
 	printf("\n Enter your name : ");
 	scanf("%s",&name);
 	
-	printf("Length of name = %d" ,strlen(name));
+	printf("\n Length of name = %d" ,strlen(name));
 	getch();
 }
