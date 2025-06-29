@@ -6,7 +6,7 @@
 
 void main()
 {
-	char a[20]="apple";
+    char a[20]="apple";
     char b[20];
     
     printf("\n Enter name: ");
