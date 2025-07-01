@@ -7,10 +7,10 @@ void main()
 	int add,sub,mul,divison;
 	int n=5;
 	
-	printf("Enter the numner1 : ");
+	printf("Enter the number1 : ");
 	scanf("%d",&no1);
 	
-	printf("Enter the numner2 : ");
+	printf("Enter the number2 : ");
 	scanf("%d",&no2);
 	
 	add = no1+no2;

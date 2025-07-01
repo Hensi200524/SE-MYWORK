@@ -11,9 +11,9 @@ void main()
 	printf("Enter Any Number : ");
 	scanf("%d",&num);
 	
-	while(num > 0)
+	while(num>0)
 	{
-		rem = num % 10;
+		rem = num%10;
 		sum+=rem;//sum+rem
 		num=num/10;
 	}

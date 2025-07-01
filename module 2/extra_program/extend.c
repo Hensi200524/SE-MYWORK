@@ -1,3 +1,5 @@
+//invalid operator input
+
 #include <stdio.h>
 #include <conio.h>
 
@@ -28,17 +30,23 @@ void main() {
             printf("\nMultiplication of %d and %d is: %d\n", no1, no2, result);
             break;
         case '/':
-            if (no2 == 0) {
+            if (no2 == 0) 
+			{
                 printf("\nError: Division by zero is not allowed.\n");
-            } else {
+            } 
+			else 
+			{
                 result = no1 / no2;
                 printf("\nDivision of %d and %d is: %d\n", no1, no2, result);
             }
             break;
         case '%':
-            if (no2 == 0) {
+            if (no2 == 0) 
+			{
                 printf("\nError: Modulo by zero is not allowed.\n");
-            } else {
+            } 
+			else 
+			{
                 result = no1 % no2;
                 printf("\nModulo of %d and %d is: %d\n", no1, no2, result);
             }

@@ -7,15 +7,15 @@ void main()
 {
     int no;
     
-    printf("Please Enter your number:");
+    printf("\n Please Enter your number:");
     scanf("%d",&no);
     
-    if(no%2){
-        printf("Even number");
+    if(no%2 == 0){
+        printf("\n Even number");
     }
     else
     {
-        printf("odd number");
+        printf("\n odd number");
     }
     
     getch();

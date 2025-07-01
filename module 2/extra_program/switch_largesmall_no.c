@@ -1,3 +1,8 @@
+/****Write a C program that takes three numbers from the user and determines:The largest number and
+smallest number using switch-case****/
+
+
+
 #include<stdio.h>
 #include<conio.h>
 

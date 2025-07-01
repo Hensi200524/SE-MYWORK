@@ -8,13 +8,13 @@ void main()
 	
 	int num,range,i,ans=0;
 	
-	printf("Enter an integer : ");
+	printf("\n Enter an integer : ");
 	scanf("%d",&num);
 	
-	printf("Enter the range : ");
+	printf("\n Enter the range : ");
 	scanf("%d",&range);
 	
-	printf("Multiplication Table for %d up to %d:\n", num, range);
+	printf("\n Multiplication Table for %d up to %d:\n", num, range);
 	
 	for(i=1;i<=range;i++)
 	{

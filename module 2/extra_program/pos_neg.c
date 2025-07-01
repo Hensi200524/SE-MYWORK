@@ -5,19 +5,19 @@ void main()
 {
     int no;
     
-    printf("Please Enter your number:");
+    printf("\n Please Enter your number:");
     scanf("%d",&no);
     
     if(no>0){
-        printf("positive number");
+        printf("\n positive number");
     }
     else if(no==0)
 	{
-    	printf("Zero");
+    	printf("\n Zero");
 	}	
     else
     {
-        printf("Negative number");
+        printf("\n Negative number");
     }
     
     getch();

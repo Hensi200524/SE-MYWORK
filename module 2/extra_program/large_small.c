@@ -1,5 +1,5 @@
-/****Write a C program that takes three numbers from the user and determines:
-o The largest number****/
+/****Write a C program that takes three numbers from the user and determines:The largest number and
+smallest number using if-else****/
 
 #include<stdio.h>
 #include<conio.h>
@@ -8,7 +8,7 @@ void main()
 {
     int a,b,c;
 
-    printf("Enter three numbers:");
+    printf("\n Enter three numbers:");
     scanf("%d %d %d",&a,&b,&c);
 
     //find largest no
@@ -37,7 +37,7 @@ void main()
         smallest = c;
     }
 
-    printf("largest number is:%d",largest);
-    printf("smallest number is:%d",smallest);
+    printf("\n largest number is:%d",largest);
+    printf("\n smallest number is:%d",smallest);
     getch();
 }
