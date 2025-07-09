@@ -1,4 +1,4 @@
-//Calculate personâ€™s insurance premium based on salary 
+//Calculate person’s insurance premium based on salary 
 
 #include<stdio.h>
 #include<conio.h>
@@ -7,23 +7,23 @@ void main()
 {
 	float salary,premium;
 	
-	printf("\n Enter the salary : ");
+	printf("\nEnter the salary : ");
 	scanf("%f",&salary);
 	
 	if(salary<10000)
 	{
-		premium = salary*0.05;//5%
+		premium = salary*0.05;
 	}
 	else if(salary<=50000)
 	{
-		premium = salary*0.10; //10%
+		premium = salary*0.10;	
 	}
 	else
 	{
-		premium = salary*0.15; //15%
+		premium = salary*0.15;
 	}
 	
-	printf("\n your insurance premium is : %f",premium);
+	printf("\nyour insurance premium is : %f",premium);
 	
 	getch();
 }

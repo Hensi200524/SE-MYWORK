@@ -18,5 +18,7 @@ void main()
 	}
 	fcolse(f1);
 	
+	
+	
 	getch();
 }
