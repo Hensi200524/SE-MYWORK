@@ -1,4 +1,4 @@
-//parameterized constuctor with same variable name,use this keyword
+//Copy constructor
 
 #include <iostream>
 using namespace std;
