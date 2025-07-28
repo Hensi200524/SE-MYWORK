@@ -1,0 +1,44 @@
+1.create Database:
+SYNTAX:CREATE DATABASE database_name
+	       CREATE DATABASE mydb;
+
+
+2.Create Table:
+SYNTAX:CREATE TABLE TABLE_NAME(column_name datatype...)
+               CREATE TABLE emp(id int PRIMARY KEY AUTO_INCREMENT,Empno int(100) , First_Name varchar(200) , Last_Name varchar(200),Designation text(200) , Hiredate varchar(100) , Salary varchar(1000) , Comm int(200) , Deptno int(50));
+
+3.Add Column:
+SYNTAX:ALTER TABLE TABLE_NAME ADD column_name datatype
+              ALTER TABLE emp add Department varchar(200);
+
+4.Change Datatype:
+SYNTAX:ALTER TABLE TABLE_NAME MODIFY column_name datatype
+              ALTER TABLE emp MODIFY Designation varchar(255);
+
+5.rename table name:
+SYNTAX:RENAME TABLE TABLE_NAME to NEWTABLE_NAME
+              RENAME TABLE emp to Employee;
+
+6.drop column:
+SYNTAX:ALTER TABLE TABLE_NAME DROP column_name
+              ALTER TABLE employee drop Department;
+
+7.Particular Column After Column:
+SYNTAX:ALTER TABLE TABLE_NAME ADD column_name datatype AFTER column_name
+              ALTER TABLE employee add Surname varchar(200) AFTER Last_Name;
+
+8.Truncate Table:
+SYNTAX:TRUNCATE TABLE TABLE_NAME
+               TRUNCATE TABLE employee;
+
+9.drop table:
+SYNTAX:DROP TABLE TABLE_NAME
+               DROP TABLE employee;
+
+10.drop database:
+SYNTAX:DROP DATABASE DATABASE_NAME
+              DROP DATABASE mydb;
+
+11.change column name:
+SYNTAX:ALTER TABLE TABLE_NAME CHANGE oldcol newcol datatype
+               ALTER TABLE employee CHANGE  Empno eno int(10); 
