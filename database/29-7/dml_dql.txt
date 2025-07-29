@@ -1,0 +1,63 @@
+1.insert multiple values:
+SYNTAX:INSERT INTO tablename (felid_nm) VALUES('value1'), ('value2')
+	INSERT INTO products (p_category) VALUES ('Electronics'),('Accessories')
+
+2.update  data using fieldname:
+SYNTAX:update tablenm set databasefieldnm='controlvalue' where databasefieldnm='controlvalue' 
+	UPDATE products SET p_category='Electronics' WHERE p_name = 'Mouse'
+
+3.update data using id:
+SYNTAX:update tablenm set databasefieldnm='controlvalue' where id='id'
+	UPDATE `products` SET p_category='Accessories' WHERE id = 4
+
+4.delete data:
+SYNTAX:delete from tablenm where id='id'
+	DELETE FROM `products` WHERE id = 5;
+	DELETE FROM `products` WHERE id = 6;
+
+5.insert data:
+SYNTAX:insert into tablename (database Field nm) values ('control value')
+	INSERT INTO products(`p_name`, `p_category`, `p_price`) VALUES ('Mobile phone','Electronics',20000)
+
+========dql======================
+1.select all record:
+SYNTAX:select * from tablenm
+	SELECT * FROM products
+
+2.select particular row:
+SYNTAX:select * from tablenm where id='id' 
+	SELECT * FROM `products` WHERE id = 4
+
+3.selct particular column:
+SYNTAX:SELECT columnnm from tablenm
+	SELECT p_name FROM products
+
+4.selct multiple column:
+SYNTAX:SELECT columnnm1,columnnm2 from tablenm
+	SELECT p_name,p_price FROM products
+
+5.selct oder by:
+SYNTAX:select colnm from tblnm order by colnm asc/desc
+	SELECT p_category FROM products ORDER BY p_category ASC
+
+=============agrigate function==================
+1.max
+SELECT max(p_price) FROM products 
+
+2.min
+SELECT min(p_price) FROM products
+
+3.sum:
+SELECT sum(p_price) FROM products
+
+4.avg:
+SELECT AVG(p_price) FROM products
+
+5.count
+SELECT COUNT(p_price) FROM products
+
+6.first
+SELECT * FROM products ORDER BY p_name LIMIT 1 
+
+7.last
+SELECT * FROM products ORDER BY id DESC LIMIT 1;
