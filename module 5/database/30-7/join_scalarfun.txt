@@ -1,0 +1,39 @@
+join:
+
+1.inner join :
+SELECT * FROM location JOIN products on location.id = products.id
+
+2.left join:
+SELECT * FROM location LEFT JOIN products on location.id = products.id
+
+3.right join:
+SELECT * FROM location RIGHT JOIN products on location.id = products.id
+
+4.full join:
+SELECT * FROM location LEFT JOIN products on location.id = products.id
+UNION
+SELECT * FROM location RIGHT JOIN products on location.id = products.id
+
+====================================================================================
+*scalar functions:
+
+1.UCASE:
+select UCASE(p_name) FROM products
+
+2.LCASE:
+select LCASE(p_name) FROM products
+
+3.MID:
+select MID(p_name,1,5) FROM products
+
+4.LENGTH:
+select LENGTH(p_name) FROM products
+
+5.ROUND:
+select ROUND(Salary,0) FROM employee
+
+6.NOW:
+SELECT City,NOW() AS datetime FROM location
+
+7.FORMAT:
+SELECT City,FORMAT(now(),'yyyy-mm-dd') AS date FROM location;
