@@ -13,7 +13,7 @@ DELIMITER //
         
     END//
     
-DELIMITER;
+DELIMITER ;
 
 2.deleteprocedure:
 
@@ -28,7 +28,7 @@ DELIMITER //
         
     END//
     
-DELIMITER;SELECT * FROM `products` WHERE 1
+DELIMITER ;
 
 3.selectprocedure:
 
@@ -42,7 +42,7 @@ DELIMITER //
        
     END//
     
-DELIMITER;
+DELIMITER ;
 
 4.insertprocedure:
 
@@ -52,8 +52,8 @@ DELIMITER //
     
     BEGIN
     	
-        INSERT into products(p_name,p_category,p_price) WHERE id = myid;
+        INSERT into products(p_name,p_category,p_price) VALUES(myid,'western','clothes','600');
         
     END//
     
-DELIMITER;
+DELIMITER ;
