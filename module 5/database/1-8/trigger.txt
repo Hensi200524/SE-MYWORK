@@ -1,0 +1,41 @@
+3.update trigger:
+DELIMITER $$
+
+	CREATE TRIGGER updatetrigger AFTER UPDATE ON subscribers FOR EACH row
+BEGIN
+
+	INSERT INTO audit_subscribers SET action_performed = 'update a new subsciber', subscriber_name = old.fname;
+    
+END $$
+
+DELIMITER ;
+
+
+2.deletetrigger
+
+
+DELIMITER $$
+
+	CREATE TRIGGER deletetrigger AFTER DELETE ON subscribers FOR EACH row
+BEGIN
+
+	INSERT INTO audit_subscribers SET action_performed = 'delete a new subsciber', subscriber_name = old.fname;
+    
+END $$
+
+DELIMITER ;
+
+
+2.inserttrigger
+
+
+DELIMITER $$
+
+	CREATE TRIGGER isrttrigger AFTER INSERT ON subscribers FOR EACH row
+BEGIN
+
+	INSERT INTO audit_subscribers SET action_performed = 'insert a new subsciber', subscriber_name = old.fname;
+    
+END $$
+
+DELIMITER ;
