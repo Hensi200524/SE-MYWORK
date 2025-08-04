@@ -1,0 +1,176 @@
+1.use database:
+USE mydb
+
+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+2.create table:
+CREATE TABLE Customers(CustomerID INT AUTO_INCREMENT PRIMARY KEY,CustomerName VARCHAR(100),Country VARCHAR(50))
+
+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+3.insert values:
+INSERT INTO Customers (CustomerName, Country) VALUES ('Chetna', 'USA'), ('Manav', 'USA'), ('Kavya', 'India'), ('Kinjal', 'India'), ('Pravin', 'India'), ('Prasant', 'India'), ('Jinal', 'India'), ('Chaya', 'India'), ('Hima', 'Canada'), ('BHargav', 'USA')
+
+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+4.group by:
+SELECT COUNT(CustomerID),Country FROM customers GROUP BY Country
+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+5.group by with having:
+SELECT COUNT(CustomerID),Country FROM customers GROUP BY Country HAVING COUNT(CustomerID) > 5
+
+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+6.Use of DISTINCT:
+SELECT DISTINCT Country FROM Customers;
+
+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+7.GRANT and REVOKE:
+=>These commands require proper privileges and are typically run by the DBA or root user.
+
+Grant SELECT on Customers table to user 'testuser':
+GRANT SELECT ON customer_db.Customers TO 'testuser'@'localhost';
+
+Revoke SELECT from that user:
+REVOKE SELECT ON customer_db.Customers FROM 'testuser'@'localhost';
+
+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+8.rollback:
+rollback;
+
+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+9.commit:
+commit;
+
+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+10.IN:
+SELECT * FROM Customers WHERE Country IN ('USA', 'India');
+
+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+11.BETWEEN:
+SELECT * FROM Customers WHERE CustomerID BETWEEN 2 AND 5;
+
+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+12.AND:
+SELECT * FROM Customers WHERE Country = 'India' AND CustomerID < 5;
+
+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+13.OR:
+SELECT * FROM Customers WHERE Country = 'UK' OR Country = 'Canada';
+
+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+14.CURSOUR:
+1)
+   CREATE TABLE tutorials (
+   ID INT PRIMARY KEY,
+   TITLE VARCHAR(100),
+   AUTHOR VARCHAR(40),
+   DATE VARCHAR(40)
+);
+
+2)
+ Insert into tutorials values
+(1, 'Java', 'Krishna', '2019-09-01'),
+(2, 'JFreeCharts', 'Satish', '2019-05-01'),
+(3, 'JavaSprings', 'Amit', '2019-05-01'),
+(4, 'Android', 'Ram', '2019-03-01'),
+(5, 'Cassandra', 'Pruthvi', '2019-04-06');
+
+3)
+   CREATE TABLE backup (
+   ID INT,
+   TITLE VARCHAR(100),
+   AUTHOR VARCHAR(40),
+   DATE VARCHAR(40)
+);
+
+4)
+	DELIMITER //
+CREATE PROCEDURE curpro_procedure()
+   BEGIN
+      DECLARE done INT DEFAULT 0;
+      DECLARE tutorialID INTEGER;
+      DECLARE tutorialTitle, tutorialAuthor, 
+	  tutorialDate VARCHAR(20);
+      DECLARE cur CURSOR FOR SELECT * FROM tutorials;
+      DECLARE CONTINUE HANDLER FOR NOT FOUND SET done = 1;
+      OPEN cur;
+      label: LOOP
+      FETCH cur INTO tutorialID, tutorialTitle, tutorialAuthor, 
+	  tutorialDate;
+      INSERT INTO backup VALUES(tutorialID, tutorialTitle, 
+	  tutorialAuthor, tutorialDate);
+      IF done = 1 THEN LEAVE label;
+      END IF;
+      END LOOP;
+      CLOSE cur;
+   END//
+DELIMITER ;
+
+5)
+	CALL `curpro_procedure`();
+
+6)
+	select * from backup;
+
+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+15. CASE on CustomerID:
+SELECT CustomerID, CustomerName,
+CASE
+    WHEN CustomerID > 3 THEN "ID is greater than 3"
+    WHEN CustomerID = 3 THEN "ID is 3"
+    ELSE "ID is less than 3"
+END AS ID_Status
+FROM Customers;
+
+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+16.IF:
+SELECT IF(2 < 5, "YES", "NO");
+
+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+17.IF on CustomerID in Customers table:
+SELECT CustomerID, CustomerName,
+IF(CustomerID > 3, "HIGH ID", "LOW ID") AS ID_Type
+FROM Customers;
+
+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+18.loop:
+1)
+CREATE TABLE Geektable (
+   value VARCHAR(50) NULL DEFAULT NULL
+);
+
+2)
+DELIMITER $$ 
+CREATE PROCEDURE add_pro()
+BEGIN
+  DECLARE a INT DEFAULT 1;
+
+  simple_loop: LOOP     
+    INSERT INTO Geektable VALUES(a);
+    SET a = a + 1;
+
+    IF a = 11 THEN
+      LEAVE simple_loop;
+    END IF;
+  END LOOP simple_loop;
+END $$
+DELIMITER ;
+
+3)call add_pro();
+
+4)select * from Geektable
+

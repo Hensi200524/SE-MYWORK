@@ -1,0 +1,20 @@
+1.create view :
+CREATE VIEW e_view AS SELECT First_Name,Designation FROM employee
+
+2.LIKE:
+SELECT * FROM students WHERE class LIKE 't%';
+
+3.cases:
+SELECT OrderID, Quantity,
+CASE 
+    WHEN Quantity > 30 THEN 'The quantity is greater than 30'
+    WHEN Quantity = 30 THEN 'The quantity is 30'
+    ELSE 'The quantity is under 30'
+END AS QuantityText
+FROM OrderDetails;
+
+4.find second highest salary:
+SELECT Salary FROM employee ORDER BY Salary DESC LIMIT 2
+
+SELECT MAX(Salary) As second_highest FROM employee
+WHERE Salary < (Select MAX(Salary) FROM employee)
