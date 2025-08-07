@@ -1,0 +1,635 @@
+================EXTRA LAB PRACTISE FOR DATABASE CONCEPTS============================
+
+1. Introduction to SQL:
+
+Lab 3: 
+
+-- 1. Create the database
+CREATE DATABASE library_db;
+
+-- 2. Create the books table
+CREATE TABLE books(book_id int PRIMARY KEY AUTO_INCREMENT,title varchar(100), author varchar(200), publisher varchar(500), year_of_publication int(100), price decimal(8,2))
+
+-- 4. Insert 5 book records
+INSERT INTO books(title, author, publisher, year_of_publication, price) VALUES
+('The Great Gatsby', 'F. Scott Fitzgerald', 'Scribner', 1925, 299.50),
+('1984', 'George Orwell', 'Secker & Warburg', 1949, 199.00),
+('To Kill a Mockingbird', 'Harper Lee', 'J.B. Lippincott & Co.', 1960, 249.75),
+('The Alchemist', 'Paulo Coelho', 'HarperOne', 1988, 175.25),
+('Pride and Prejudice', 'Jane Austen', 'T. Egerton', 1813, 150.00);
+
+Lab 4: 
+
+-- 1. Create the members table
+CREATE TABLE members(member_id int PRIMARY key AUTO_INCREMENT, member_name varchar(200),date_of_membership date, email varchar(200))
+
+-- 2. Insert 5 book records
+INSERT INTO members(member_name, date_of_membership, email)
+VALUES
+('Nisha Mehta', '2023-01-10', 'nish12@gmail.com'),
+('Raj Pandya', '2019-02-05', 'pandya6@gmail.com'),
+('Pooja Gohel', '2023-03-15', 'poojad12@gmail.com'),
+('Pooja Desai', '2023-04-20', 'pooja.desai@gmail.com'),
+('Karan Joshi', '2023-05-25', 'karan.joshi@gmail.com');
+('Brijesh Parekh', '2019-09-16', 'birju@gmail.com');
+
+****************************************************************************************************************************************************
+2. SQL Syntax:
+
+Lab 3:
+
+--1.Retrieve all members who joined the library before 2022. Use appropriate SQL syntax with WHERE and ORDER BY.
+SELECT * FROM members WHERE date_of_membership < '2022-01-01' ORDER BY date_of_membership ASC;
+
+Lab 4:
+
+--1.SQL queries to display the titles of books published by a specific author. Sort the results by year_of_publication in descending order.
+SELECT title,year_of_publication FROM books WHERE author = 'Harper Lee' ORDER BY year_of_publication DESC;
+
+***************************************************************************************************************************************************
+3. SQL Constraints:
+
+Lab 3:
+
+--1.Add a CHECK constraint to ensure that the price of books in the books table is greater than 0.
+ALTER TABLE books ADD CONSTRAINT chk_price CHECK (price>0)
+
+Lab 4:
+
+--1.Modify the members table to add a UNIQUE constraint on the email column, ensuring that each member has a unique email address.
+ALTER TABLE members ADD CONSTRAINT unq_email UNIQUE (email)
+
+****************************************************************************************************************************************************
+4. Main SQL Commands and Sub-commands (DDL):
+
+Lab 3:
+
+--1.create table authors.
+CREATE TABLE authors (author_id int PRIMARY KEY AUTO_INCREMENT, first_name varchar(50), last_name varchar(50), country varchar(50))
+
+Lab 4:
+
+--1. Create a table publishers.
+CREATE TABLE publishers (publisher_id int PRIMARY KEY AUTO_INCREMENT, publisher_name varchar(50),
+contact_number varchar(15) UNIQUE, address text(100))
+
+****************************************************************************************************************************************************
+5. ALTER Command:
+
+Lab 3:
+
+--1.add genre column in books table.
+ALTER TABLE books ADD COLUMN genre VARCHAR(50);
+
+--2.Update genre for existing records.
+UPDATE books SET genre = 'Fiction' WHERE book_id = 1;
+UPDATE books SET genre = 'Science' WHERE book_id = 2;
+UPDATE books SET genre = 'Biography' WHERE book_id = 3;
+UPDATE books SET genre = 'Fantasy' WHERE book_id = 4;
+UPDATE books SET genre = 'History' WHERE book_id = 5;
+
+Lab 4:
+
+--1.members table to increase the length of the email column to 100 characters.
+ALTER TABLE members MODIFY email varchar(100)
+
+****************************************************************************************************************************************************
+6. DROP Command:
+
+Lab 3: 
+
+--1. Verify the table structure.
+ DESCRIBE publishers;
+
+--2.Drop the table.
+DROP TABLE publishers;
+
+Lab 4: 
+
+--1.Create a backup table.
+CREATE TABLE members_backup AS
+SELECT * FROM members;
+
+--2.Drop the original members table.
+DROP TABLE members;
+
+****************************************************************************************************************************************************
+7. Data Manipulation Language (DML):
+
+Lab 3:
+
+--1.Insert new authors.
+INSERT INTO authors(first_name,last_name,country) VALUES('BHavesh','pandya','India'),('Bhavna','Panara','America'),('Chirag','Gohel','Canada')
+
+--2.Update last name of one author.
+UPDATE authors SET last_name = 'Jogel' WHERE author_id = 1
+
+Lab 4:
+
+--1.Delete a book from the books table where the price is higher than $100.
+DELETE FROM books WHERE price > 100 LIMIT 1;
+
+***************************************************************************************************************************************************
+8. UPDATE Command:
+
+Lab 3: 
+
+--1.Update the year_of_publication of a book with a specific book_id.
+UPDATE books SET year_of_publication = 2021 WHERE book_id = 4
+
+Lab 4: 
+--1.Increase the price of all books published before 2015 by 10%
+UPDATE books SET price = price * 1.10 WHERE year_of_publication < 2015
+
+***************************************************************************************************************************************************
+9. DELETE Command:
+
+Lab 3: 
+
+--1.Remove all members who joined before 2020 from the members table.
+DELETE FROM members WHERE date_of_membership < '2020-01-01';
+
+Lab 4: 
+
+--1.Delete all books that have a NULL value in the author column.
+DELETE FROM books WHERE author IS null
+
+***************************************************************************************************************************************************
+10. Data Query Language (DQL):
+
+Lab 3:
+
+--1. retrieve all books with price between $50 and $100 
+SELECT * FROM books WHERE price BETWEEN 50 AND 100
+
+Lab 4: 
+
+--1.Retrieve the list of books sorted by author in ascending order and limit the results to the top 3 entries.
+SELECT * FROM books ORDER BY author ASC LIMIT 3
+
+***************************************************************************************************************************************************
+11. Data Control Language (DCL):
+
+Lab 3:
+
+--1.Grant SELECT permission to a user named librarian on the books table
+GRANT SELECT ON library_db books TO 'librarian'@'localhost';
+
+Lab 4: 
+
+--1.Grant INSERT and UPDATE permissions to the user admin on the members table.
+GRANT INSERT, UPDATE ON library_db.members TO 'admin'@'localhost';
+
+***************************************************************************************************************************************************
+12. REVOKE Command:
+
+Lab 3: 
+
+--1.Revoke the INSERT privilege from the user librarian on the books table.
+REVOKE INSERT ON library_db.books FROM 'librarian'@'localhost';
+
+Lab 4: 
+
+--1.Revoke all permissions from user admin on the members table
+REVOKE ALL PRIVILEGES ON library_db.members FROM 'admin'@'localhost';
+
+***************************************************************************************************************************************************
+13. Transaction Control Language (TCL):
+
+Lab 3: 
+
+-- 1.Start the transaction
+START TRANSACTION;
+
+--2. Insert multiple records
+INSERT INTO books (book_id, title, author) VALUES (1, 'Book A', 'Author A');
+INSERT INTO books (book_id, title, author) VALUES (2, 'Book B', 'Author B');
+
+--3. Commit the changes
+COMMIT;
+
+--4. Insert one more record
+INSERT INTO books (book_id, title, author) VALUES (3, 'Book C', 'Author C');
+
+--5. Rollback the last insert
+ROLLBACK;
+
+Lab 4:
+
+-- 1.Start the transaction
+START TRANSACTION;
+
+--2. Set a SAVEPOINT before updates
+SAVEPOINT before_update;
+
+--3. Perform updates
+UPDATE members SET name = 'Nisha Mehta' WHERE member_id = 1;
+UPDATE members SET name = 'Jane Smith' WHERE member_id = 2;
+
+--4. Roll back to the savepoint
+ROLLBACK TO SAVEPOINT before_update;
+
+-- Optional: commit if needed
+COMMIT;
+
+***************************************************************************************************************************************************
+14. SQL Joins:
+
+ Lab 3:
+
+--1.add column authour_id
+ALTER TABLE books ADD COLUMN author_id int;
+
+--2.add foreign key
+ALTER TABLE books ADD INDEX(author_id)
+
+--3.inner join
+SELECT title,author FROM books JOIN authors ON books.author = authors.first_name
+
+ Lab 4: 
+
+--1.full join with book and authors table
+SELECT * FROM books LEFT JOIN authors ON books.author_id = authors.author_id
+UNION
+SELECT * FROM books RIGHT JOIN authors ON books.author_id = authors.author_id
+
+***************************************************************************************************************************************************
+15. SQL Group By:
+
+Lab 3:
+ 
+--1.Group books by genre and display the total number of books in each genre.
+SELECT  genre ,COUNT(genre) AS total_books FROM books GROUP BY genre
+
+Lab 4: 
+
+--1.Group members by the year they joined and find the number of members who joined each year.
+SELECT year(date_of_membership) AS JOIN_year,COUNT(date_of_membership) AS total_members FROM members GROUP BY YEAR(date_of_membership)
+
+***************************************************************************************************************************************************
+16. SQL Stored Procedure:
+
+Lab 3:
+
+--1. Write a stored procedure to retrieve all books by a particular author.
+
+DELIMITER //
+CREATE PROCEDURE getbookauthor1(IN authorname varchar(100))
+BEGIN
+	SELECT title,author FROM books WHERE author= authorname;
+    
+   END //
+DELIMITER ;
+
+ Lab 4:
+
+--1. Write a stored procedure that takes book_id as an argument and returns the price of the book.
+
+DELIMITER //
+
+CREATE PROCEDURE get_book_price1 (IN input_book_id decimal(8,2))
+
+BEGIN
+    SELECT price 
+    FROM books 
+    WHERE book_id = input_book_id;
+END //
+
+DELIMITER ;
+
+***************************************************************************************************************************************************
+17. SQL View:
+
+Lab 3:
+
+--1. Create a view to show only the title, author, and price of books from the books table.
+CREATE VIEW view_books_info AS SELECT title, author, price FROM books;
+
+Lab 4:
+
+--1. Create a view to display members who joined before 2020.
+CREATE VIEW members_before_2020 AS SELECT * FROM members WHERE date_of_membership < '2024-01-01';
+
+***************************************************************************************************************************************************
+18. SQL Trigger:
+
+Lab 3: 
+
+--1. create a table from book_update_log and then create a trigger
+
+DELIMITER $$
+CREATE TRIGGER update_tri AFTER UPDATE ON books FOR EACH ROW
+BEGIN
+INSERT INTO book_update_log(book_id,old_title,new_title,update_time)
+VALUES(OLD.book_id,OLD.title,new.title,CURRENT_TIMESTAMP);
+END $$
+DELIMITER ;
+
+Lab 4: 
+
+--1. create a table from delete_log_change and then create a trigger
+
+DELIMITER $$
+CREATE TRIGGER delete_tri AFTER DELETE ON books FOR EACH ROW
+BEGIN
+INSERT INTO delete_log_change(book_id,title,author,price,action,delete_time)
+VALUES(OLD.book_id,OLD.title,OLD.author,OLD.price,'DELETED',CURRENT_TIMESTAMP);
+END $$
+DELIMITER ;
+
+***************************************************************************************************************************************************
+19. Introduction to PL/SQL:
+
+Lab 3: 
+
+--1.Write a PL/SQL block to insert a new book into the books table and display a confirmation message.
+
+DELIMITER //
+
+CREATE PROCEDURE insert_book()
+
+BEGIN
+	DECLARE v_book_id int DEFAULT 101;
+    DECLARE  v_title varchar(100) DEFAULT 'The Art my Mysql';
+    DECLARE v_author varchar(100) DEFAULT 'prakruti vyas';
+    DECLARE v_price decimal(8,2) DEFAULT 1200;
+    
+    INSERT INTO books(book_id,title,author,price)VALUES(v_book_id,v_title,v_author,v_price);
+    
+    SELECT concat('BOOK"',v_title,'"has been sucessfully inserted') AS Message;
+END //
+DELIMITER ;
+
+Lab 4: 
+
+--1.Write a PL/SQL block to display the total number of books in the books table.
+
+DELIMITER //
+
+CREATE PROCEDURE count_books()
+BEGIN
+    DECLARE total_books INT;
+    
+    SELECT COUNT(*) INTO total_books FROM books;
+    
+    SELECT CONCAT('Total number of books: ', total_books) AS result;
+END //
+
+DELIMITER ;
+
+***************************************************************************************************************************************************
+20. PL/SQL Syntax:
+
+Lab 3: 
+
+--1.Write a PL/SQL block to declare variables for book_id and price, assign values, and display the results.
+
+DELIMITER //
+
+CREATE PROCEDURE display_book_info()
+BEGIN
+   DECLARE v_book_id INT DEFAULT 101;
+   DECLARE v_price DECIMAL(10,2) DEFAULT 299.99;
+
+   SELECT CONCAT('Book ID: ', v_book_id) AS book_id_result,
+          CONCAT('Price: ', v_price) AS price_result;
+END;
+//
+
+DELIMITER ;
+
+
+Lab 4:
+
+--2. Write a PL/SQL block using constants and perform arithmetic operations on book prices.
+
+DELIMITER //
+
+CREATE PROCEDURE price_arithmetic()
+BEGIN
+    -- Declare constants
+    DECLARE c_price1 DECIMAL(10,2) DEFAULT 300.00;
+    DECLARE c_price2 DECIMAL(10,2) DEFAULT 450.00;
+
+    -- Declare result variables
+    DECLARE v_total DECIMAL(10,2);
+    DECLARE v_difference DECIMAL(10,2);
+    DECLARE v_average DECIMAL(10,2);
+
+    -- Perform arithmetic
+    SET v_total = c_price1 + c_price2;
+    SET v_difference = c_price2 - c_price1;
+    SET v_average = (c_price1 + c_price2) / 2;
+
+    -- Display results
+    SELECT 
+        CONCAT('Total Price: ₹', v_total) AS Total_Price,
+        CONCAT('Price Difference: ₹', v_difference) AS Price_Difference,
+        CONCAT('Average Price: ₹', v_average) AS Average_Price;
+END //
+
+DELIMITER ;
+
+***************************************************************************************************************************************************
+21. PL/SQL Control Structures:
+
+ Lab 3: 
+
+--1.Write a PL/SQL block using IF-THEN-ELSE to check if a book's price is above $100 and print a message accordingly.
+
+DELIMITER //
+
+CREATE PROCEDURE chk_book_price()
+
+BEGIN
+
+	DECLARE v_price decimal (10,2) DEFAULT 120.00;
+	DECLARE v_msj varchar(255);
+    
+    IF v_price > 100 THEN
+		SET v_msj = 'This Book Is Expensive';
+    ELSE
+    	SET v_msj = 'This Book Is Affordable';
+    END IF;
+    
+    SELECT v_msj AS price_status;
+END //
+DELIMITER ;
+
+Lab 4: 
+
+--2.Use a FOR LOOP in PL/SQL to display the details of all books one by one.
+
+DELIMITER //
+
+CREATE PROCEDURE display_all_books()
+BEGIN
+    DECLARE done INT DEFAULT FALSE;
+    DECLARE v_id INT;
+    DECLARE v_title VARCHAR(255);
+    DECLARE v_author VARCHAR(255);
+    DECLARE v_price DECIMAL(10,2);
+
+    DECLARE book_cursor CURSOR FOR
+        SELECT book_id, title, author, price FROM books;
+
+    DECLARE CONTINUE HANDLER FOR NOT FOUND SET done = TRUE;
+
+    OPEN book_cursor;
+
+    read_loop: LOOP
+        FETCH book_cursor INTO v_id, v_title, v_author, v_price;
+
+        IF done THEN
+            LEAVE read_loop;
+        END IF;
+
+        -- Display book details
+        SELECT CONCAT('Book ID: ', v_id) AS Book_ID,
+               CONCAT('Title: ', v_title) AS Title,
+               CONCAT('Author: ', v_author) AS Author,
+               CONCAT('Price: $', v_price) AS Price;
+    END LOOP;
+
+    CLOSE book_cursor;
+END //
+
+DELIMITER ;
+
+***************************************************************************************************************************************************
+22. SQL Cursors:
+
+ Lab 3: 
+
+--1.Write a PL/SQL block using an explicit cursor to fetch and display all records from the members table.
+
+DELIMITER //
+
+CREATE PROCEDURE display_all_members()
+BEGIN
+    DECLARE done INT DEFAULT FALSE;
+    DECLARE v_id INT;
+    DECLARE v_name VARCHAR(255);
+    DECLARE v_date DATE;
+    DECLARE v_email VARCHAR(255);
+
+    DECLARE member_cursor CURSOR FOR
+        SELECT member_id, member_name, date_of_membership, email FROM members;
+
+    DECLARE CONTINUE HANDLER FOR NOT FOUND SET done = TRUE;
+
+    OPEN member_cursor;
+
+    label: LOOP
+        FETCH member_cursor INTO v_id, v_name, v_date, v_email;
+
+        IF done THEN
+            LEAVE label;
+        END IF;
+
+        SELECT 
+            CONCAT('Member ID: ', v_id) AS Member_ID,
+            CONCAT('Name: ', v_name) AS Name,
+            CONCAT('Membership Date: ', v_date) AS Membership_Date,
+            CONCAT('Email: ', v_email) AS Email;
+    END LOOP;
+
+    CLOSE member_cursor;
+END //
+
+DELIMITER ;
+
+Lab 4: 
+
+--2.Create a cursor to retrieve books by a particular author and display their titles.
+
+DELIMITER //
+
+CREATE PROCEDURE get_books_by_author(IN input_author VARCHAR(255))
+BEGIN
+    -- Declare variables
+    DECLARE done INT DEFAULT FALSE;
+    DECLARE v_title VARCHAR(255);
+
+    -- Declare cursor
+    DECLARE book_cursor CURSOR FOR
+        SELECT title FROM books WHERE author = input_author;
+
+    -- Declare handler for end of cursor
+    DECLARE CONTINUE HANDLER FOR NOT FOUND SET done = TRUE;
+
+    -- Open cursor
+    OPEN book_cursor;
+
+    read_loop: LOOP
+        FETCH book_cursor INTO v_title;
+
+        IF done THEN
+            LEAVE read_loop;
+        END IF;
+
+        -- Output the book title
+        SELECT CONCAT('Book Title: ', v_title) AS Title;
+    END LOOP;
+
+    -- Close cursor
+    CLOSE book_cursor;
+END //
+
+DELIMITER ;
+
+***************************************************************************************************************************************************
+23. Rollback and Commit Savepoint:
+
+Lab 3: 
+
+-- 1.Start transaction
+START TRANSACTION;
+
+-- 2. Insert a new member
+INSERT INTO members (member_id, member_name, date_of_membership, email)
+VALUES (6, 'Rahul Mehta', 2021-06-21, 'rahul.mehta@example.com');
+
+-- 3. Set a savepoint after the insert
+SAVEPOINT after_insert;
+
+-- 4. Simulate an update that we might want to undo
+UPDATE members SET member_name = 'R. Mehta' WHERE member_id = 6;
+
+-- 5. Rollback the update (but not the insert)
+ROLLBACK TO after_insert;
+
+-- 6.Commit to save the insert
+COMMIT;
+
+Lab 4: 
+
+--1. Start transaction
+START TRANSACTION;
+
+-- 2. Insert multiple books
+INSERT INTO books (book_id, title, author, price) VALUES 
+(301, 'Learn MySQL', 'Arun Patel', 299.00),
+(302, 'Mastering SQL', 'Anuj Panara', 399.00);
+
+-- 3. Commit the above inserts
+COMMIT;
+
+-- 4. Start another transaction block
+START TRANSACTION;
+
+-- 5. Set a savepoint
+SAVEPOINT before_updates;
+
+-- 6. Insert or update more books
+INSERT INTO books (book_id, title, author, price)
+VALUES 
+(303, 'Learn Sql', 'Arun Patel', 500.00);
+
+-- 7. Rollback only the last insert
+ROLLBACK TO before_updates;
+
+-- 8. Commit the remaining transaction (which has nothing new now)
+COMMIT;
+
+***************************************************************************************************************************************************
